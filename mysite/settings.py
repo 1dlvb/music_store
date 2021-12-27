@@ -15,7 +15,7 @@ SECRET_KEY = cfg('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = cfg('DEBUG')
 
-ALLOWED_HOSTS = ['.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 
 # Application definition
@@ -73,6 +73,11 @@ DATABASES = {
         'PASSWORD': cfg('DB_PASSWORD'),
         'HOST': cfg('DB_HOST'),
         'PORT': cfg('DB_PORT'),
+        "OPTION": {
+                    'init_command': "SET sql_mode='STRICT_TRANS_TABLES', innodb_strict_mode=1",
+                    'charset': 'utf8mb4',
+                    "autocommit": True,
+            }
     }
 }
 
